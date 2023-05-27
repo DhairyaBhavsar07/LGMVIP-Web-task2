@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Calculator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            font-family: 'Poppins',sans-serif;
+        }
+        .header{
+            width: 100vw;
+            text-align: center;
+            margin-top: 10vh;
+            color: rgb(35, 131, 155);
+            font-size: 1.5rem;
+        }
+        .row{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 10vh;
+        }
+        .col{
+            width: 30vw;
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(0, 97, 121);
+            padding: 2rem 3rem;
+            border-radius: 20px;
+        }
+        .btn-group-ans{
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 3px;
+            margin-top: 10px;
+            margin-bottom: -15px;
+        }
+        .btn-group{
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 3px;
+            margin-bottom: -15px;
+        }
+        .btn button{
+            width: 100%;
+            background-color: rgb(54, 215, 255);
+            border: none;
+            border-radius: 5px;
+            font-size: 2rem;
+            color: white;
+        }
+        .btn-s button{
+            width: 100%;
+            background-color: rgb(127, 229, 255);
+            border: none;
+            border-radius: 5px;
+            font-size: 2rem;
+            color: white;
+        }
+        .btn-o button{
+            width: 100%;
+            background-color: rgb(152, 232, 252);
+            border: none;
+            border-radius: 5px;
+            font-size: 2rem;
+            color: white;
+        }
+        .form-control{
+            width: 94%;
+            padding: 0.5rem 0rem;
+            font-size: 1.5rem; 
+            background-color: rgb(202, 244, 255);
+            border: none;
+            border-radius: 5px;
+            color: rgb(35, 131, 155);
+            margin-bottom: 0.5rem;
+            padding-left: 2rem;
+        }
+        .form-control::placeholder{
+            font-size: 1.5rem;
+            color: rgb(35, 131, 155);;
+            /* padding: 0.5rem 0rem 0.5rem 2rem; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header"><h1>Standard Calculator</h1></div>
+        <div class="row">
+            <div class="col">
+                <form>
+                    <input type="text" class="form-control" placeholder="Answer" name="answer" id="answer" readonly><br>
+                    <input type="text" class="form-control" placeholder="Display" name="display" id="display" readonly><br>
+                    <div class="btn-group-ans">
+                        <div class="btn-s">
+                            <button type="button" onclick="mainBody(17)" id="clear" >AC</button><br><br>                         
+                        </div>
+                        <div class="btn-s">
+                            <button type="button" onclick="mainBody(18)" id="backspace">Del</i></button><br><br>                         
+                        </div>
+                        <div class="btn-s">
+                            <button type="button" onclick="mainBody(15)" id="equals">=</button><br><br>                         
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <div class="btn">
+                            <button type="button" onclick="mainBody(16)" id="dot">.</button><br><br>                         
+                        </div>
+                        <div class="btn">
+                            <button type="button" onclick="mainBody(9)" id="zero">0</button><br><br>                         
+                        </div>
+                        <div class="btn">
+                            <button type="button" onclick="mainBody(14)" id="mod">%</button><br><br>                         
+                        </div>
+                        <div class="btn-o">
+                            <button type="button" onclick="mainBody(13)" id="divide">/</button><br><br>                         
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <div class="btn">
+                            <button type="button" onclick="mainBody(6)" id="seven">7</button><br><br>                         
+                        </div>
+                        <div class="btn">
+                            <button type="button" onclick="mainBody(7)" id="eight">8</button><br><br>                         
+                        </div>
+                        <div class="btn">
+                            <button type="button" onclick="mainBody(8)" id="nine">9</button><br><br>                         
+                        </div>
+                        <div class="btn-o">
+                            <button type="button" onclick="mainBody(12)" id="multiply">x</button><br><br>                         
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <div class="btn">
+                            <button type="button" onclick="mainBody(3)" id="four">4</button><br><br>                         
+                        </div>
+                        <div class="btn">
+                            <button type="button" onclick="mainBody(4)" id="five">5</button><br><br>                         
+                        </div>
+                        <div class="btn">
+                            <button type="button" onclick="mainBody(5)" id="six">6</button><br><br>                         
+                        </div>
+                        <div class="btn-o">
+                            <button type="button" onclick="mainBody(11)" id="subtract">-</button><br><br>                         
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <div class="btn">
+                            <button type="button" onclick="mainBody(0)" id="one">1</button><br><br>                         
+                        </div>
+                        <div class="btn">
+                            <button type="button" onclick="mainBody(1)" id="two">2</button><br><br>                         
+                        </div>
+                        <div class="btn">
+                            <button type="button" onclick="mainBody(2)" id="three">3</button><br><br>                         
+                        </div>
+                        <div class="btn-o">
+                            <button type="button" onclick="mainBody(10)" id="add">+</button><br><br>                         
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        var flagNum=0, flagAllocate=0, flagOp=0, flagOpDecide=0;
+        var num1, result, num2;
+        var sumNum1="", sumNum2="", disp="",add, sub, mul, div, mod;
+        function mainBody(index)
+        {
+            var arrVar=[];
+            arrVar[0]="1";
+            arrVar[1]="2";
+            arrVar[2]="3";
+            arrVar[3]="4";
+            arrVar[4]="5";
+            arrVar[5]="6";
+            arrVar[6]="7";
+            arrVar[7]="8";
+            arrVar[8]="9";
+            arrVar[9]="0";
+            arrVar[10]="+";
+            arrVar[11]="-";
+            arrVar[12]="x";
+            arrVar[13]="÷";
+            arrVar[14]="%";
+            arrVar[15]="=";
+            arrVar[16]=".";
+            arrVar[17]="AC";
+            arrVar[18]="DEL";
+            if((index>=0 && index<=9) || index==16)
+            {
+                if(flagNum==0)
+                {
+                    num1=arrVar[index];
+                    disp=disp+num1;
+                    console.log("num1", num1);
+                    console.log("Display", disp);
+                    sumNum1=sumNum1+num1;
+                    console.log("Number",sumNum1);
+                    document.getElementById("display").value=disp;    
+                }
+                else
+                {
+                    num2=arrVar[index];
+                    disp=disp+num2;
+                    console.log("num2", num2);
+                    console.log("Display", disp);
+                    sumNum2=sumNum2+num2;
+                    document.getElementById("display").value=disp;  
+                }
+            }
+            else
+            {
+                if(index==18)
+                {
+                    if(flagNum==0)
+                    {
+                        sumNum1=sumNum1.substring(0, (sumNum1.length)-1);
+                        disp=sumNum1;
+                        document.getElementById("display").value=disp;
+                        console.log("NewNum",sumNum1);
+                    }
+                    else
+                    {
+                        disp=disp.substring(0, disp.length-1);
+                        sumNum2=sumNum2.substring(0, sumNum2.length-1);
+                        document.getElementById("display").value=disp;
+                    }
+                }
+                else if(index==17)
+                {
+                    sumNum1="";
+                    sumNum2="";
+                    disp="";
+                    flagOp=0;
+                    flagOpDecide=0;
+                    flagNum=0;
+                    document.getElementById("display").value="";
+                    document.getElementById("answer").value="";
+                }
+                else
+                {
+                    if(flagOp==1)
+                    {
+                        switch(flagOpDecide)
+                        {
+                            case 1:
+                                addition();
+
+                                document.getElementById("answer").value=result;
+                                if(flagOp==1 && index==15)
+                                {
+                                    displayAnswer();
+                                    flagOp=0; 
+                                }
+                                break;
+                            case 2:
+                                subtraction();
+                                if(flagOp==1 && index==15)
+                                {
+                                    displayAnswer();
+                                    flagOp=0; 
+                                } 
+                                break;
+                            case 3:
+                                multiplication();
+                                if(flagOp==1 && index==15)
+                                {
+                                    displayAnswer();
+                                    flagOp=0; 
+                                }
+                                break;
+                            case 4:
+                                division();
+                                if(flagOp==1 && index==15)
+                                {
+                                    displayAnswer();
+                                    flagOp=0; 
+                                } 
+                                break;
+                            case 5:
+                                modulus();
+                                if(flagOp==1 && index==15)
+                                {
+                                    displayAnswer();
+                                    flagOp=0; 
+                                }  
+                                break;
+                        }
+                        switch(index)
+                        {
+                            case 10:
+                                add=arrVar[index];
+                                disp=disp+add;
+                                document.getElementById("display").value=disp; 
+                                flagOp=1;
+                                flagOpDecide=1;
+                                break;
+
+                            case 11:
+                                sub=arrVar[index];
+                                disp=disp+sub;
+                                document.getElementById("display").value=disp; 
+                                flagOp=1;
+                                flagOpDecide=2;
+                                break;
+
+                            case 12:
+                                mul=arrVar[index];
+                                disp=disp+mul;
+                                document.getElementById("display").value=disp; 
+                                flagOp=1;
+                                flagOpDecide=3;
+                                break;
+
+                            case 13:
+                                div=arrVar[index];
+                                disp=disp+div;
+                                document.getElementById("display").value=disp; 
+                                flagOp=1;
+                                flagOpDecide=4;
+                                break;
+
+                            case 14:
+                                mod=arrVar[index];
+                                disp=disp+mod;
+                                document.getElementById("display").value=disp; 
+                                flagOp=1;
+                                flagOpDecide=5;
+                                break;
+                            case 15:
+                                var equa=arrVar[index];
+                                console.log("Equals",equa);
+                                displayAnswer();
+                                break;       
+                        }
+                    }
+                    else
+                    {
+                        flagNum=1;
+                        switch(index)
+                        {
+                            case 10:
+                                add=arrVar[index];
+                                disp=disp+add;
+                                document.getElementById("display").value=disp; 
+                                flagOp=1;
+                                flagOpDecide=1;
+                                break;
+
+                            case 11:
+                                sub=arrVar[index];
+                                disp=disp+sub;
+                                document.getElementById("display").value=disp; 
+                                flagOp=1;
+                                flagOpDecide=2;
+                                break;
+
+                            case 12:
+                                mul=arrVar[index];
+                                disp=disp+mul;
+                                document.getElementById("display").value=disp; 
+                                flagOp=1;
+                                flagOpDecide=3;
+                                break;
+
+                            case 13:
+                                div=arrVar[index];
+                                disp=disp+div;
+                                document.getElementById("display").value=disp; 
+                                flagOp=1;
+                                flagOpDecide=4;
+                                break;
+
+                            case 14:
+                                mod=arrVar[index];
+                                disp=disp+mod;
+                                document.getElementById("display").value=disp; 
+                                flagOp=1;
+                                flagOpDecide=5;
+                                break;
+                            case 15:
+                                var equa=arrVar[index];
+                                console.log("Equals",equa);
+                                displayAnswer();
+                                break;       
+                        }
+                    }
+                }
+            }       
+        }
+        function displayAnswer()
+        {
+            document.getElementById("answer").value=result;    
+        }
+        function addition()
+        {
+            result=Number(sumNum1) + Number(sumNum2);
+            document.getElementById("answer").value=result;
+
+            sumNum1=""+result;
+            console.log("result",sumNum1);
+            sumNum2="";
+        }
+        function subtraction()
+        {
+            result=Number(sumNum1) - Number(sumNum2);
+            document.getElementById("answer").value=result;
+            sumNum1=""+result;
+            sumNum2="";
+        }
+        function multiplication()
+        {
+            result=Number(sumNum1) * Number(sumNum2);
+            document.getElementById("answer").value=result;
+            sumNum1=""+result;
+            sumNum2="";
+        }
+        function division()
+        {
+            result=Number(sumNum1) / Number(sumNum2);
+            document.getElementById("answer").value=result;
+            sumNum1=""+result;
+            sumNum2="";
+        }
+        function modulus()
+        {
+            result=Number(sumNum1) % Number(sumNum2);
+            document.getElementById("answer").value=result;
+            sumNum1=""+result;
+            sumNum2="";
+        }
+    </script>
+</body>
+</html>
